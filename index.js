@@ -3,6 +3,7 @@ const app = express();
 const storjMethods = require("./storjMethods");
 const mongo = require("./mongo");
 var multer = require('multer');
+var fs = require('fs');
 
 var st = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,7 +18,7 @@ const up = multer({storage: st});
 var cp = up.fields([{name: 'file', maxCount: 1}]);
 
 
-function uploadF(userId, u, f) {
+function uploadF(userId, u, f, res) {
     storjMethods.createBucket(userId, function (res) {
         storjMethods.uploadFile(res.id, u, "./" + f, function (fileId) {
             if (!res.headersSent) {
@@ -27,29 +28,28 @@ function uploadF(userId, u, f) {
     })
 }
 
-function goThroughtBuckets(bs, bi, userId, f, u, res) {
+function goThroughtBuckets(bs, bi, r, f, u, res) {
     bs.forEach(function (b, index) {
         bi.push(b.name);
         if (index === bs.length - 1) {
-            var rank = bi.indexOf(userId);
-            var bucketId = bs[rank].id;
+            var rank = bi.indexOf(r);
             if (rank !== -1) {
+                var bucketId = bs[rank].id;
                 storjMethods.uploadFile(bucketId, u, "./" + f.path, function (fileId) {
                     if (!res.headersSent) {
                         res.send(fileId);
                     }
                 });
             } else {
-                uploadF(req.params.userId, u, "./" + f);
+                uploadF(r, u, "./" + f, res);
             }
         }
     });
 }
 
-
 app.post('/codeUpload/:userId', cp, function (req, res) {
     var f = req.files.file[0];
-    var u = req.body['ethHash'];
+    var u = req.body['hash'];
     var r = req.params['userId'];
     var bucketIds = [];
     storjMethods.listBuckets(function (buckets) {
@@ -60,7 +60,23 @@ app.post('/codeUpload/:userId', cp, function (req, res) {
     });
 });
 
-app.get('/list/:bucket', cp, function (req, res) {
+
+app.post('/org_logo', cp, function (req, res) {
+    var f = req.files.file[0];
+    var n = req.body['hash'];
+    fs.readFile(f.path, function (err, data) {
+        fs.writeFile("./local/"+n, data, function (err) {
+            if (err) return console.log(err);
+            res.send(200);
+        });
+    });
+});
+
+app.get('/org_logo/:hash', function (req, res) {
+    res.sendFile(__dirname + "/local/" + req.params["hash"]);
+});
+
+app.get('/list/:bucket', function (req, res) {
     var b = req.params['bucket'];
     storjMethods.getFiles(b, function (files) {
         res.send(files);
@@ -92,7 +108,7 @@ app.get('/screening/:hash', function (req, res) {
     })
 });
 
-app.get('/download/:bucket/:hash', cp, function (req, res) {
+app.get('/download/:bucket/:hash', function (req, res) {
     var b = req.params['bucket'];
     var h = req.params['hash'];
 
