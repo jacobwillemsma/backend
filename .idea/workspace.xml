@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c674266-2a0a-4379-8d58-18d31e4ec22a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/local/asdfasdfas2133" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/local/undefined" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507966710848333" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079667568681103" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079667778971555" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507970440268379" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f150797049728977" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079705320651803" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079705577711445" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079706686831511" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507971407447300" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079714950971521" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507971768483397" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079718667062518" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507971911216524" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507971931417902" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f1507971962464873" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079720744151683" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079745623252419" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/f15079745785591005" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-    </list>
+    <list default="true" id="6c674266-2a0a-4379-8d58-18d31e4ec22a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -60,8 +37,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-270">
-              <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+            <state relative-caret-position="-114">
+              <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -160,12 +137,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1507981427722</updated>
-      <workItem from="1507981429022" duration="4027000" />
+      <workItem from="1507981429022" duration="5343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4027000" />
+    <option name="totallyTimeSpent" value="5343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="948" extended-state="6" />
@@ -235,8 +212,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        <state relative-caret-position="-114">
+          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>
