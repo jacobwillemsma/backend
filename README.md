@@ -1,7 +1,9 @@
 <p align="center">
-  <img src="./documentation/logo.png" height="100" />
+  <img src="./documentation/logo.png" height="250" /></img>
 </p>
+
 # ThirdEye backend
+
 [![GitHub version](https://badge.fury.io/gh/ThirdEyeTeam%2Fbackend.svg)](https://badge.fury.io/gh/ThirdEyeTeam%2Fbackend)
 [![Npm Licence](https://img.shields.io/npm/l/redaction.svg)](https://www.npmjs.com/package/redaction)
 
