@@ -1,4 +1,6 @@
 # ThirdEye backend
+[![Npm Licence](https://img.shields.io/npm/l/redaction.svg)](https://www.npmjs.com/package/redaction)
+
 This repository contains the backend for ThirdEye.
 The system is a redundant backing mechanism that saves the files to Storj and to mongodb.
 A hash has been calculated from the main code file and is used as an identifier for the mongo and Storj record.
