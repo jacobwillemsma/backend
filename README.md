@@ -18,3 +18,6 @@ Run with
 * POST /codeUpload/:userId -> save code to Storj
 
  
+<p>
+  <img src="./documetnation/graph.png" height="400" />
+</p>
