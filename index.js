@@ -64,6 +64,7 @@ app.post('/codeUpload/:userId', cp, function (req, res) {
 app.post('/org_logo', cp, function (req, res) {
     var f = req.files.file[0];
     var n = req.body['hash'];
+    console.log(f.path);
     fs.readFile(f.path, function (err, data) {
         fs.writeFile("./local/"+n, data, function (err) {
             if (err) return console.log(err);
