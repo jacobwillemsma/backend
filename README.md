@@ -1,6 +1,6 @@
-<div style="text-align:center">
-  <img src="./documentation/logo.png" height="400" />
-</div>
+<p align="center">
+  <img src="./documentation/logo.png" height="100" />
+</p>
 # ThirdEye backend
 [![GitHub version](https://badge.fury.io/gh/ThirdEyeTeam%2Fbackend.svg)](https://badge.fury.io/gh/ThirdEyeTeam%2Fbackend)
 [![Npm Licence](https://img.shields.io/npm/l/redaction.svg)](https://www.npmjs.com/package/redaction)
