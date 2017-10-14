@@ -4,7 +4,7 @@ The system is a redundant backing mechanism that saves the files to Storj and to
 A hash has been calculated from the main code file and is used as an identifier for the mongo and Storj record.
 Mongo is used to hold on to less important information to make the application more user friendly. The actual auditing of the code, reputation of the users, payout, disputes and arbitrage is done on the blockchain. This backend serves as a relay between the blockchain and Storj. It is setup with node.js and express.js as a REST API.
 
-run with 
+Run with 
   ```node index.js```
  
 * POST /screening -> save the code document that needs to be audited on to Storj.
