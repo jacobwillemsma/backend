@@ -19,5 +19,5 @@ Run with
 
  
 <p>
-  <img src="./documetnation/graph.png" height="400" />
+  <img src="./documentation/graph.png" height="400" />
 </p>
