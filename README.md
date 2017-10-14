@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./documentation/logo.png" height="250" /></img>
+  <img src="./documentation/logo1.png" height="250" /></img>
 </p>
 
 # ThirdEye backend
