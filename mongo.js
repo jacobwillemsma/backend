@@ -59,14 +59,17 @@ var createScreening = function (body, callback) {
     var id = body.fileName;
     var lineRange = body.lineRange;
     var comment = body.comment;
-    MongoClient.connect(url, function(err, db) {
-        assert.equal(null, err);
-        var collection = db.collection('storj');
-        collection.updateOne({fileId:id},{
-            lineRange: lineRange,
-            comment: comment
-        }, function(err, records) {
-            callback(id)
+    getScreening(body, id, function (obj) {
+        var fileId = obj.id;
+        MongoClient.connect(url, function(err, db) {
+            assert.equal(null, err);
+            var collection = db.collection('storj');
+            collection.updateOne({fileId:fileId},{
+                lineRange: lineRange,
+                comment: comment
+            }, function(err, records) {
+                callback(id)
+            });
         });
     });
 };

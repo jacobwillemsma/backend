@@ -7,7 +7,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }))l
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 app.use(function(req, res, next) {
