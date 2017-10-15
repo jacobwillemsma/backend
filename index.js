@@ -4,6 +4,7 @@ const storjMethods = require("./storjMethods");
 const mongo = require("./mongo");
 var multer = require('multer');
 var fs = require('fs');
+var cors = require('cors');
 
 var st = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -22,7 +23,7 @@ function uploadF(userId, u, f, res) {
     storjMethods.createBucket(userId, function (reso) {
         storjMethods.uploadFile(reso.id, u, f, function (fileId) {
             if (!res.headerSent) {
-                res.send(fileId)
+                res.json({storjHash: fileId});
             }
         });
     })
@@ -37,7 +38,7 @@ function goThroughtBuckets(bs, bi, r, filePath, u, res) {
                 var bucketId = bs[rank].id;
                 storjMethods.uploadFile(bucketId, u, filePath, function (fileId) {
                     if (!res.headersSent) {
-                        res.send(fileId);
+                        res.json({storjHash: fileId});
                     }
                 });
             } else {
@@ -61,7 +62,7 @@ app.post('/codeUpload', cp, function (req, res) {
                 storjMethods.createBucket(r, function (reso) {
                     storjMethods.uploadFile(reso.id, pr, filePath, function (fileId) {
                         if (!res.headerSent) {
-                            res.send(m)
+                            res.json({storjHash: m});
                         }
                     });
                 });
