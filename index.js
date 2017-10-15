@@ -5,6 +5,13 @@ const mongo = require("./mongo");
 var multer = require('multer');
 var fs = require('fs');
 var cors = require('cors');
+app.use(cors())
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 var st = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -76,6 +83,7 @@ app.post('/codeUpload', cp, function (req, res) {
 app.post('/org_logo', cp, function (req, res) {
     var f = req.files.file[0];
     var n = req.body['hash'];
+    console.log(f.path);
     fs.readFile(f.path, function (err, data) {
         fs.writeFile("./local/"+n, data, function (err) {
             if (err) return console.log(err);
@@ -108,8 +116,8 @@ app.post('/claim', function (req, res) {
 });
 
 app.post('/screening', function (req, res) {
-    mongo.createFile(req.body, function (res) {
-        res.send(200);
+    mongo.createFile(req.body, function (resp) {
+        res.send(resp);
     });
 });
 

@@ -57,12 +57,14 @@ var changeEntry = function (body, collection, callback) {
 
 var createScreening = function (body, callback) {
     var id = body.fileName;
+    var lineRange = body.lineRange;
+    var comment = body.comment;
     MongoClient.connect(url, function(err, db) {
         assert.equal(null, err);
         var collection = db.collection('storj');
-        collection.insertOne({
-            fileId: id,
-            behaviour: body.behaviour
+        collection.updateOne({fileId:id},{
+            lineRange: lineRange,
+            comment: comment
         }, function(err, records) {
             callback(id)
         });

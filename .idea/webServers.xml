@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ade1c18c-99ed-4432-96fe-ff955370158e" name="ocean" url="http://104.236.245.207">
+        <fileTransfer host="104.236.245.207" port="22" privateKey="$USER_HOME$/.ssh/ocean" rootFolder="/root" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
