@@ -116,7 +116,7 @@ app.post('/claim', function (req, res) {
 });
 
 app.post('/screening', function (req, res) {
-    mongo.createFile(req.body, function (resp) {
+    mongo.createScreening(req.body, function (resp) {
         res.send(resp);
     });
 });
