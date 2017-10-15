@@ -5,7 +5,8 @@ const mongo = require("./mongo");
 var multer = require('multer');
 var fs = require('fs');
 var cors = require('cors');
-app.use(cors())
+app.use(cors());
+app.use(express.bodyParser());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -110,8 +111,8 @@ app.post('/claim/check_exist', function (req, res) {
 });
 
 app.post('/claim', function (req, res) {
-    mongo.createFile(req.body, function (res) {
-        res.send(200);
+    mongo.createFile(req.body, function (resp) {
+        res.send(resp);
     });
 });
 
