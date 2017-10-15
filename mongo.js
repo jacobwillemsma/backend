@@ -22,7 +22,7 @@ var getScreening = function(body, hash, callback) {
         findFileById({
             fileId: hash
         }, collection, function (result) {
-            callback(result);
+            callback(result[0]);
         })
     })
 };
