@@ -13,6 +13,13 @@ A hash has been calculated from the main code file and is used as an identifier 
 Mongo is used to hold on to less important information to make the application more user friendly. The actual auditing of the code, reputation of the users, payout, disputes and arbitrage is done on the blockchain. This backend serves as a relay between the blockchain and Storj. It is setup with node.js and express.js as a REST API.
 
 ## Install
+
+### you need to create a file called secret/pass.js and inside insert this code but replaced with your values.
+ ```
+var url = 'mongodb://<user>:<password>@<url>:<port>/<db>';
+module.exports.url = url;
+ ```
+ 
 Run with
   ```bash
   npm install
