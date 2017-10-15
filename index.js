@@ -4,9 +4,11 @@ const storjMethods = require("./storjMethods");
 const mongo = require("./mongo");
 var multer = require('multer');
 var fs = require('fs');
+var bodyParser = require('body-parser');
 var cors = require('cors');
 app.use(cors());
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }))l
+
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
