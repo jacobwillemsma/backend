@@ -13,6 +13,7 @@ const storj = new libstorj.Environment({
 //           fileName = STRING, the fileName you want to give to the file.
 //           filePath = STRING, where your file is located.
 function uploadFile(bucketId, fileName, filePath, callback) {
+    console.log(fileName, filePath);
     try {
         storj.storeFile(bucketId, filePath, {
             filename: fileName,
@@ -22,7 +23,7 @@ function uploadFile(bucketId, fileName, filePath, callback) {
             },
             finishedCallback: function (err, fileId) {
                 if (err) {
-                    callback("duplicate")
+                    callback(err.toString())
                 }
                 console.log('File upload complete:', fileId);
                 callback(fileId);
@@ -30,7 +31,7 @@ function uploadFile(bucketId, fileName, filePath, callback) {
         });
     }
     catch(err) {
-        callback("duplicate");
+        callback(err.toString());
     }
 }
 
@@ -63,7 +64,6 @@ function listBuckets(callback) {
         if (err) {
             return console.error(err);
         }
-        console.log(result);
         callback(result);
     });
 }

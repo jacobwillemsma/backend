@@ -1,6 +1,6 @@
 var MongoClient  = require('mongodb').MongoClient;
 var assert       = require('assert');
-var url          = require("./secret/pass.js");
+var url          = require("./secret/pass.js").url;
 
 var getFile = function(body, callback) {
     MongoClient.connect(url, function(err, db) {
@@ -55,12 +55,27 @@ var changeEntry = function (body, collection, callback) {
     })
 };
 
+var createScreening = function (body, callback) {
+    var id = body.fileName;
+    MongoClient.connect(url, function(err, db) {
+        assert.equal(null, err);
+        var collection = db.collection('storj');
+        collection.insertOne({
+            fileId: id,
+            behaviour: body.behaviour
+        }, function(err, records) {
+            callback(id)
+        });
+    });
+};
+
+
 
 var createFile = function(body, callback) {
     MongoClient.connect(url, function(err, db) {
         assert.equal(null, err);
         var collection = db.collection('storj');
-        collection.insert({
+        collection.insertOne({
             fileId: body.fileId,
             status: "active",
             lineRange: [0,0],
@@ -77,5 +92,6 @@ module.exports = {
     'getFile': getFile,
     'changeEntry': changeEntry,
     'getScreening': getScreening,
-    'findFileById': findFileById
+    'findFileById': findFileById,
+    'createScreening': createScreening
 };

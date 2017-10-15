@@ -19,44 +19,55 @@ var cp = up.fields([{name: 'file', maxCount: 1}]);
 
 
 function uploadF(userId, u, f, res) {
-    storjMethods.createBucket(userId, function (res) {
-        storjMethods.uploadFile(res.id, u, "./" + f, function (fileId) {
-            if (!res.headersSent) {
-                res.send(fileId);
+    storjMethods.createBucket(userId, function (reso) {
+        storjMethods.uploadFile(reso.id, u, f, function (fileId) {
+            if (!res.headerSent) {
+                res.send(fileId)
             }
         });
     })
 }
 
-function goThroughtBuckets(bs, bi, r, f, u, res) {
+function goThroughtBuckets(bs, bi, r, filePath, u, res) {
     bs.forEach(function (b, index) {
         bi.push(b.name);
         if (index === bs.length - 1) {
             var rank = bi.indexOf(r);
             if (rank !== -1) {
                 var bucketId = bs[rank].id;
-                storjMethods.uploadFile(bucketId, u, "./" + f.path, function (fileId) {
+                storjMethods.uploadFile(bucketId, u, filePath, function (fileId) {
                     if (!res.headersSent) {
                         res.send(fileId);
                     }
                 });
             } else {
-                uploadF(r, u, "./" + f, res);
+                uploadF(r, u, filePath, res);
             }
         }
     });
 }
 
-app.post('/codeUpload/:userId', cp, function (req, res) {
+app.post('/codeUpload', cp, function (req, res) {
     var f = req.files.file[0];
-    var u = req.body['hash'];
-    var r = req.params['userId'];
     var bucketIds = [];
-    storjMethods.listBuckets(function (buckets) {
-        if (buckets.length === 0) {
-            uploadF(r, u, "./" + f);
-        }
-        goThroughtBuckets(buckets, bucketIds, r, f, u, res)
+    req.body.fileName = f.filename;
+    mongo.createScreening(req.body, function (m) {
+        u = req.body.organisation;
+        r = req.body.organisation;
+        pr = m+u;
+        filePath = "./uploads/" + f.filename;
+        storjMethods.listBuckets(function (buckets) {
+            if (buckets.length === 0) {
+                storjMethods.createBucket(r, function (reso) {
+                    storjMethods.uploadFile(reso.id, pr, filePath, function (fileId) {
+                        if (!res.headerSent) {
+                            res.send(m)
+                        }
+                    });
+                });
+            }
+            goThroughtBuckets(buckets, bucketIds, r, filePath, pr, res)
+        });
     });
 });
 
@@ -64,7 +75,6 @@ app.post('/codeUpload/:userId', cp, function (req, res) {
 app.post('/org_logo', cp, function (req, res) {
     var f = req.files.file[0];
     var n = req.body['hash'];
-    console.log(f.path);
     fs.readFile(f.path, function (err, data) {
         fs.writeFile("./local/"+n, data, function (err) {
             if (err) return console.log(err);
